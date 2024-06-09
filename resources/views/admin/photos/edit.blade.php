@@ -15,6 +15,8 @@
 
     <div class="container mt-4">
 
+        @include('partials.errors')
+
         <form action="{{ route('admin.photos.update', $photo) }}" method="post" enctype="multipart/form-data">
             @csrf
             @method('PUT')

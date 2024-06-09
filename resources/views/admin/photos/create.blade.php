@@ -15,6 +15,8 @@
 
     <div class="container mt-4">
 
+        @include('partials.errors')
+
         <form action="{{ route('admin.photos.store') }}" method="post" enctype="multipart/form-data">
             @csrf
 
