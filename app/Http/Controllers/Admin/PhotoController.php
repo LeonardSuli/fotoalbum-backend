@@ -53,7 +53,7 @@ class PhotoController extends Controller
         Photo::create($val_data);
 
         // Redirect
-        return to_route('admin.photos.index');
+        return to_route('admin.photos.index')->with('message', 'Photo info created successfully');
     }
 
 
@@ -100,7 +100,7 @@ class PhotoController extends Controller
         $photo->update($val_data);
 
         // Redirect
-        return to_route('admin.photos.index');
+        return to_route('admin.photos.index')->with('message', 'Photo info updated successfully');
     }
 
 
@@ -111,6 +111,6 @@ class PhotoController extends Controller
      */
     public function destroy(Photo $photo)
     {
-        //
+        // return to_route('admin.photos.index')->with('message', 'Photo info deleted successfully');
     }
 }

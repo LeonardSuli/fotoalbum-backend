@@ -15,6 +15,13 @@
 
     <div class="container my-3 py-auto">
 
+        {{-- Flash redirect --}}
+        @if (session('message'))
+            <div class="alert alert-success">
+                {{ session('message') }}
+            </div>
+        @endif
+
         <div class="table-responsive">
             <table class="table table-primary">
                 <thead>
