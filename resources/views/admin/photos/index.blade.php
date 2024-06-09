@@ -13,7 +13,7 @@
 
     </header>
 
-    <div class="container my-3">
+    <div class="container my-3 py-auto">
 
         <div class="table-responsive">
             <table class="table table-primary">
@@ -31,9 +31,9 @@
                     @forelse ($photos as $photo)
                         <tr class="">
 
-                            <td scope="row">{{ $photo->id }}</td>
+                            <td class="align-middle" scope="row">{{ $photo->id }}</td>
 
-                            <td>
+                            <td class="align-middle">
                                 @if (Str::startsWith($photo->upload_image, 'https://'))
                                     <img width="140px" src="{{ $photo->upload_image }}" alt="">
                                 @else
@@ -41,11 +41,11 @@
                                 @endif
                             </td>
 
-                            <td>{{ $photo->title }}</td>
+                            <td class="align-middle">{{ $photo->title }}</td>
 
-                            <td>{{ $photo->slug }}</td>
+                            <td class="align-middle">{{ $photo->slug }}</td>
 
-                            <td>
+                            <td class="align-middle">
 
                                 <a class="btn btn-primary btn-sm" href="{{ route('admin.photos.show', $photo) }}">
                                     <i class="fas fa-eye fa-xs fa-fw"></i> View
@@ -54,6 +54,8 @@
                                 <a class="btn btn-secondary btn-sm" href="{{ route('admin.photos.edit', $photo) }}">
                                     <i class="fas fa-pencil fa-xs fa-fw"></i> Edit
                                 </a>
+
+                                Delete
 
                             </td>
 
@@ -69,6 +71,8 @@
                 </tbody>
             </table>
         </div>
+
+        {{ $photos->links('pagination::bootstrap-5') }}
 
     </div>
 @endsection
