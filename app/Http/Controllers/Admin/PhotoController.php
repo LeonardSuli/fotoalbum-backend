@@ -41,7 +41,7 @@ class PhotoController extends Controller
     {
         // dd($request->all());
 
-        // We take data validated from StorePhotoRequest
+        // Validate from StorePhotoRequest
         $val_data = $request->validated();
 
         // We validate slug with laravel function
@@ -49,8 +49,10 @@ class PhotoController extends Controller
 
         // dd($val_data);
 
+        // Create
         Photo::create($val_data);
 
+        // Redirect
         return to_route('admin.photos.index');
     }
 
@@ -64,6 +66,9 @@ class PhotoController extends Controller
     {
         return view('admin.photos.show', compact('photo'));
     }
+
+
+
 
     /**
      * Show the form for editing the specified resource.
@@ -81,7 +86,21 @@ class PhotoController extends Controller
      */
     public function update(UpdatePhotoRequest $request, Photo $photo)
     {
-        //
+        // dd($request->all());
+
+        // Validate from UpdatePhotoRequest
+        $val_data = $request->validated();
+
+        // We validate slug with laravel function 
+        $val_data['slug'] = Str::slug($request->title, '-');
+
+        // dd($val_data);
+
+        // Create
+        $photo->update($val_data);
+
+        // Redirect
+        return to_route('admin.photos.index');
     }
 
 

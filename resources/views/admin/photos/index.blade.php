@@ -18,7 +18,7 @@
         <div class="table-responsive">
             <table class="table table-primary">
                 <thead>
-                    <tr>
+                    <tr class="">
                         <th scope="col">ID</th>
                         <th scope="col">Image</th>
                         <th scope="col">Title</th>

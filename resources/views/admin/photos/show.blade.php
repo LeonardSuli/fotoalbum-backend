@@ -19,19 +19,20 @@
 
             <div class="col">
 
-                <td>
+                <div>
                     @if (Str::startsWith($photo->upload_image, 'https://'))
                         <img width="100%" src="{{ $photo->upload_image }}" alt="">
                     @else
                         <img width="100%" src="{{ asset('storage/' . $photo->upload_image) }}" alt="">
                     @endif
-                </td>
+                </div>
 
             </div>
 
             <div class="col">
 
-                <td>{{ $photo->title }}</td>
+                <div>{{ $photo->title }}</div>
+                <div>{{ $photo->description }}</div>
 
             </div>
 
