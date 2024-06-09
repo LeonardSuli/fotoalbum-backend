@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "02b8a05bd44e608e0404ccbe6cc46e88",
+    "content-hash": "88bb11153e63f9f39e710e97ec749780",
     "packages": [
         {
             "name": "brick/math",
@@ -2382,6 +2382,62 @@
                 }
             ],
             "time": "2023-02-08T01:06:31+00:00"
+        },
+        {
+            "name": "pacificdev/laravel_9_preset",
+            "version": "1.3.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/fabiopacificicom/laravel-9-preset.git",
+                "reference": "5b45e6956613d5b74442aabd44d6edeb822fbc3f"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/fabiopacificicom/laravel-9-preset/zipball/5b45e6956613d5b74442aabd44d6edeb822fbc3f",
+                "reference": "5b45e6956613d5b74442aabd44d6edeb822fbc3f",
+                "shasum": ""
+            },
+            "require": {
+                "laravel/framework": "^9.0 || ^10.0 || ^11.0",
+                "php": "^8.1 || ^8.2"
+            },
+            "suggest": {
+                "pacificdev/gemini-ai-terminal-assistant-for-laravel": "Recommended for ai-powered support with the application development"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "PacificDev\\Laravel9Preset\\PacificDevServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "PacificDev\\Laravel9Preset\\": "src/",
+                    "PacificDev\\Laravel9Preset\\Commands\\": "src/Commands/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "fbhood",
+                    "email": "mail@fabiopacifici.com"
+                }
+            ],
+            "description": "Default preset for laravel 9 with bootstrap",
+            "keywords": [
+                "laravel",
+                "preset"
+            ],
+            "support": {
+                "issues": "https://github.com/fabiopacificicom/laravel-9-preset/issues",
+                "source": "https://github.com/fabiopacificicom/laravel-9-preset"
+            },
+            "time": "2024-05-29T10:57:43+00:00"
         },
         {
             "name": "phpoption/phpoption",
