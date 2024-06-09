@@ -15,27 +15,27 @@
 
     <div class="container my-3">
 
-        <row>
+        <div class="row">
 
-            <col>
-            <td>
-                @if (Str::startsWith($photo->upload_image, 'https://'))
-                    <img width="140px" src="{{ $photo->upload_image }}" alt="">
-                @else
-                    <img width="140px" src="{{ asset('storage/' . $photo->upload_image) }}" alt="">
-                @endif
-            </td>
-            </col>
+            <div class="col">
 
+                <td>
+                    @if (Str::startsWith($photo->upload_image, 'https://'))
+                        <img width="100%" src="{{ $photo->upload_image }}" alt="">
+                    @else
+                        <img width="100%" src="{{ asset('storage/' . $photo->upload_image) }}" alt="">
+                    @endif
+                </td>
 
+            </div>
 
+            <div class="col">
 
+                <td>{{ $photo->title }}</td>
 
-            <col>
-            <td>{{ $photo->title }}</td>
-            </col>
+            </div>
 
-        </row>
+        </div>
 
     </div>
 @endsection

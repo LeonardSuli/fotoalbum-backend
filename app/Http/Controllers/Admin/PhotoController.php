@@ -6,6 +6,7 @@ use App\Models\Photo;
 use App\Http\Requests\StorePhotoRequest;
 use App\Http\Requests\UpdatePhotoRequest;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Str;
 
 class PhotoController extends Controller
 {
@@ -19,6 +20,9 @@ class PhotoController extends Controller
         return view('admin.photos.index', ['photos' => Photo::orderByDesc('id')->paginate(5)]);
     }
 
+
+
+
     /**
      * Show the form for creating a new resource.
      */
@@ -27,13 +31,31 @@ class PhotoController extends Controller
         return view('admin.photos.create');
     }
 
+
+
+
     /**
      * Store a newly created resource in storage.
      */
     public function store(StorePhotoRequest $request)
     {
-        dd($request->all());
+        // dd($request->all());
+
+        // We take data validated from StorePhotoRequest
+        $val_data = $request->validated();
+
+        // We validate slug with laravel function
+        $val_data['slug'] = Str::slug($request->title, '-');
+
+        // dd($val_data);
+
+        Photo::create($val_data);
+
+        return to_route('admin.photos.index');
     }
+
+
+
 
     /**
      * Display the specified resource.
@@ -48,8 +70,11 @@ class PhotoController extends Controller
      */
     public function edit(Photo $photo)
     {
-        //
+        return view('admin.photos.edit', compact('photo'));
     }
+
+
+
 
     /**
      * Update the specified resource in storage.
@@ -58,6 +83,9 @@ class PhotoController extends Controller
     {
         //
     }
+
+
+
 
     /**
      * Remove the specified resource from storage.

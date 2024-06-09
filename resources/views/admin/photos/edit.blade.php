@@ -5,7 +5,7 @@
 
         <div class="container d-flex justify-content-between align-items-center">
 
-            <h1>Create a photo information</h1>
+            <h1>Edit photo information</h1>
 
             <a class="btn btn-secondary" href="{{ route('admin.photos.index') }}">Back</a>
 
