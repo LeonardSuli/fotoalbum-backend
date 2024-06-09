@@ -17,7 +17,7 @@ class PhotoController extends Controller
     {
         // dd(Photo::orderByDesc('id')->paginate());
 
-        return view('admin.photos.index', ['photos' => Photo::orderByDesc('id')->paginate(5)]);
+        return view('admin.photos.index', ['photos' => Photo::orderByDesc('id')->paginate(10)]);
     }
 
 
@@ -111,6 +111,10 @@ class PhotoController extends Controller
      */
     public function destroy(Photo $photo)
     {
-        // return to_route('admin.photos.index')->with('message', 'Photo info deleted successfully');
+        // delete the resource
+        $photo->delete();
+
+        // redirect
+        return to_route('admin.photos.index')->with('message', 'Photo info deleted successfully');
     }
 }
