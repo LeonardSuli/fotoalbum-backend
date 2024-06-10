@@ -28,6 +28,14 @@
                 <small id="titleHelper" class="form-text text-muted">Add photo title here</small>
             </div>
 
+            {{-- Upload Image --}}
+            <div class="mb-3">
+                <label for="upload_image" class="form-label">Image</label>
+                <input type="file" class="form-control" name="upload_image" id="upload_image" placeholder="Image"
+                    aria-describedby="ImageHelper" />
+                <div id="ImageHelper" class="form-text">Upload a image</div>
+            </div>
+
             {{-- Description --}}
             <div class="mb-3">
                 <label for="description" class="form-label">Description</label>

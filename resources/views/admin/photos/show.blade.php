@@ -5,7 +5,7 @@
 
         <div class="container d-flex justify-content-between align-items-center">
 
-            <h1>Photos</h1>
+            <h1>{{ $photo->title }}</h1>
 
             <a class="btn btn-primary" href="{{ route('admin.photos.index') }}">All photos</a>
 
@@ -31,7 +31,7 @@
 
             <div class="col">
 
-                <div>{{ $photo->title }}</div>
+                <h2>{{ $photo->title }}</h2>
                 <div>{{ $photo->description }}</div>
 
             </div>

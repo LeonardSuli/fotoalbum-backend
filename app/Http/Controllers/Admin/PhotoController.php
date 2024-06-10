@@ -7,6 +7,7 @@ use App\Http\Requests\StorePhotoRequest;
 use App\Http\Requests\UpdatePhotoRequest;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Storage;
 
 class PhotoController extends Controller
 {
@@ -47,10 +48,17 @@ class PhotoController extends Controller
         // We validate slug with laravel function
         $val_data['slug'] = Str::slug($request->title, '-');
 
+
+        $image_path = Storage::put('uploads', $request->upload_image);
+        // dd($image_path);
+
+        $val_data['upload_image'] = $image_path;
         // dd($val_data);
+
 
         // Create
         Photo::create($val_data);
+
 
         // Redirect
         return to_route('admin.photos.index')->with('message', 'Photo info created successfully');
