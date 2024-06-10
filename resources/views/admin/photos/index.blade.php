@@ -42,13 +42,12 @@
 
                             <td class="align-middle">
 
-                                {{-- <img width="140px" src="{{ asset('storage/' . $photo->upload_image) }}" alt=""> --}}
-
                                 @if (Str::startsWith($photo->upload_image, 'https://'))
                                     <img width="140px" src="{{ $photo->upload_image }}" alt="">
                                 @else
                                     <img width="140px" src="{{ asset('storage/' . $photo->upload_image) }}" alt="">
                                 @endif
+
                             </td>
 
                             <td class="align-middle">{{ $photo->title }}</td>

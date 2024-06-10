@@ -29,6 +29,24 @@
                 <small id="titleHelper" class="form-text text-muted">Add photo title here</small>
             </div>
 
+            {{-- Upload Image --}}
+            <div class="d-flex gap-3">
+
+                @if (Str::startsWith($photo->upload_image, 'https://'))
+                    <img width="140px" src="{{ $photo->upload_image }}" alt="">
+                @else
+                    <img width="140px" src="{{ asset('storage/' . $photo->upload_image) }}" alt="">
+                @endif
+
+                <div class="mb-3">
+                    <label for="upload_image" class="form-label">Upload another image</label>
+                    <input type="file" class="form-control" name="upload_image" id="upload_image" placeholder="Image"
+                        aria-describedby="ImageHelper" />
+                    <div id="ImageHelper" class="form-text">Upload a image</div>
+                </div>
+
+            </div>
+
             {{-- Description --}}
             <div class="mb-3">
                 <label for="description" class="form-label">Description</label>

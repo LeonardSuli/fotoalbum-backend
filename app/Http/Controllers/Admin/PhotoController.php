@@ -45,13 +45,14 @@ class PhotoController extends Controller
         // Validate from StorePhotoRequest
         $val_data = $request->validated();
 
-        // We validate slug with laravel function
+        // Validate slug with laravel function
         $val_data['slug'] = Str::slug($request->title, '-');
 
 
         $image_path = Storage::put('uploads', $request->upload_image);
         // dd($image_path);
 
+        // Validate image
         $val_data['upload_image'] = $image_path;
         // dd($val_data);
 
@@ -99,10 +100,28 @@ class PhotoController extends Controller
         // Validate from UpdatePhotoRequest
         $val_data = $request->validated();
 
-        // We validate slug with laravel function 
+        // Validate slug with laravel function 
         $val_data['slug'] = Str::slug($request->title, '-');
 
         // dd($val_data);
+
+        // condition if there is the image
+        if ($request->has('upload_image')) {
+
+            // check if there is a image
+            if ($photo->upload_image) {
+
+                // if so, delete it
+                Storage::delete($photo->upload_image);
+            }
+
+            // upload the new image
+            $image_path = Storage::put('uploads', $request->upload_image);
+            // dd($image_path);
+            $val_data['upload_image'] = $image_path;
+            // dd($val_data);
+
+        };
 
         // Create
         $photo->update($val_data);
@@ -119,6 +138,13 @@ class PhotoController extends Controller
      */
     public function destroy(Photo $photo)
     {
+        // check if there is a image
+        if ($photo->upload_image) {
+
+            // if so, delete it
+            Storage::delete($photo->upload_image);
+        }
+
         // delete the resource
         $photo->delete();
 
