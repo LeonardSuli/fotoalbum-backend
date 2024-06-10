@@ -30,12 +30,12 @@
             </div>
 
             {{-- Upload Image --}}
-            <div class="d-flex gap-3">
+            <div class="d-flex align-items-center gap-3 ">
 
                 @if (Str::startsWith($photo->upload_image, 'https://'))
-                    <img width="140px" src="{{ $photo->upload_image }}" alt="">
+                    <img width="200px" src="{{ $photo->upload_image }}" alt="">
                 @else
-                    <img width="140px" src="{{ asset('storage/' . $photo->upload_image) }}" alt="">
+                    <img width="200px" src="{{ asset('storage/' . $photo->upload_image) }}" alt="">
                 @endif
 
                 <div class="mb-3">

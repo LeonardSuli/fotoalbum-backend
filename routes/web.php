@@ -28,7 +28,9 @@ Route::middleware(['auth', 'verified'])
         Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
 
         // Photos route here
-        Route::resource('photos', PhotoController::class);
+        Route::resource('photos', PhotoController::class)->parameters([
+            'photos' => 'photo:slug'
+        ]);
     });
 
 
