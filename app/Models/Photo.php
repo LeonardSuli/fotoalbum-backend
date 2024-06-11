@@ -4,10 +4,21 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Photo extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['title', 'upload_image', 'description', 'in_evidence', 'slug'];
+    protected $fillable = ['title', 'upload_image', 'description', 'in_evidence', 'slug', 'category_id'];
+
+    /**
+     * Get the category that owns the Post
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function category(): BelongsTo
+    {
+        return $this->belongsTo(Category::class);
+    }
 }
