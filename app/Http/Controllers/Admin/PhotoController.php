@@ -87,7 +87,9 @@ class PhotoController extends Controller
      */
     public function edit(Photo $photo)
     {
-        return view('admin.photos.edit', compact('photo'));
+        $categories = Category::all();
+
+        return view('admin.photos.edit', compact('photo', 'categories'));
     }
 
 
@@ -126,7 +128,7 @@ class PhotoController extends Controller
 
         };
 
-        // Create
+        // Update
         $photo->update($val_data);
 
         // Redirect

@@ -21,9 +21,10 @@
 
                 <div>
                     @if (Str::startsWith($photo->upload_image, 'https://'))
-                        <img width="100%" src="{{ $photo->upload_image }}" alt="">
+                        <img loading='lazy' width="100%" src="{{ $photo->upload_image }}" alt="">
                     @else
-                        <img width="100%" src="{{ asset('storage/' . $photo->upload_image) }}" alt="">
+                        <img loading='lazy' width="100%" src="{{ asset('storage/' . $photo->upload_image) }}"
+                            alt="">
                     @endif
                 </div>
 
@@ -32,6 +33,9 @@
             <div class="col">
 
                 <h2>{{ $photo->title }}</h2>
+
+                <strong>Category: </strong> {{ $photo->category ? $photo->category->name : 'Uncategorized' }}
+
                 <div>{{ $photo->description }}</div>
 
             </div>
