@@ -52,13 +52,16 @@ class PhotoController extends Controller
         $val_data['slug'] = Str::slug($request->title, '-');
 
 
-        $image_path = Storage::put('uploads', $request->upload_image);
-        // dd($image_path);
+        if ($request->has('upload_image')) {
 
-        // Validate image
-        $val_data['upload_image'] = $image_path;
-        // dd($val_data);
+            $image_path = Storage::put('uploads', $request->upload_image);
+            // dd($image_path);
 
+            // Validate image
+            $val_data['upload_image'] = $image_path;
+            // dd($val_data);
+
+        }
 
         // Create
         Photo::create($val_data);

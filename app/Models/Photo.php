@@ -13,12 +13,23 @@ class Photo extends Model
     protected $fillable = ['title', 'upload_image', 'description', 'in_evidence', 'slug', 'category_id'];
 
     /**
-     * Get the category that owns the Post
+     * Get the category that owns the Photo
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
     public function category(): BelongsTo
     {
         return $this->belongsTo(Category::class);
+    }
+
+
+    /**
+     * Get the user that owns the Photo
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function user(): BelongsTo
+    {
+        return $this->belongsTo(User::class);
     }
 }
