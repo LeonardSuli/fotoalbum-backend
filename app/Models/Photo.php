@@ -10,7 +10,7 @@ class Photo extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['title', 'upload_image', 'description', 'in_evidence', 'slug', 'category_id'];
+    protected $fillable = ['title', 'upload_image', 'description', 'in_evidence', 'slug', 'category_id', 'user_id'];
 
     /**
      * Get the category that owns the Photo

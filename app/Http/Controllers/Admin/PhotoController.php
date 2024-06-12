@@ -19,7 +19,7 @@ class PhotoController extends Controller
     {
         // dd(Photo::orderByDesc('id')->paginate());
 
-        return view('admin.photos.index', ['photos' => Photo::orderByDesc('id')->paginate(10)]);
+        return view('admin.photos.index', ['photos' => Photo::where('user_id', auth()->id())->orderByDesc('id')->paginate(10)]);
     }
 
 
@@ -63,6 +63,8 @@ class PhotoController extends Controller
 
         }
 
+        $val_data['user_id'] = auth()->id();
+
         // Create
         Photo::create($val_data);
 
@@ -90,9 +92,14 @@ class PhotoController extends Controller
      */
     public function edit(Photo $photo)
     {
-        $categories = Category::all();
+        // Insert this condition if someone tries to hack your photos
+        if ($photo->user_id == auth()->id()) {
 
-        return view('admin.photos.edit', compact('photo', 'categories'));
+            $categories = Category::all();
+
+            return view('admin.photos.edit', compact('photo', 'categories'));
+        }
+        abort(403, 'You cannnot edit photos of others users!');
     }
 
 
@@ -103,6 +110,12 @@ class PhotoController extends Controller
      */
     public function update(UpdatePhotoRequest $request, Photo $photo)
     {
+        // Insert this condition if someone tries to hack your photos
+        if (auth()->id() != $photo->user_id) {
+
+            abort(403, 'You cannnot update photos of others users!');
+        }
+
         // dd($request->all());
 
         // Validate from UpdatePhotoRequest
@@ -146,6 +159,14 @@ class PhotoController extends Controller
      */
     public function destroy(Photo $photo)
     {
+
+        // Insert this condition if someone tries to hack your photos
+        if (auth()->id() != $photo->user_id) {
+
+            abort(403, 'You cannnot delete photos of others users!');
+        }
+
+
         // check if there is a image
         if ($photo->upload_image) {
 
