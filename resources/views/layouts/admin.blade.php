@@ -53,11 +53,21 @@
                     <ul class="navbar-nav me-auto">
 
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ url('/') }}">{{ __('Home') }}</a>
+                            <a class="nav-link" href="{{ url('/') }}">
+                                <i class="fas fa-home fa-sm fa-fw"></i> {{ __('Home') }}
+                            </a>
                         </li>
 
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('admin.photos.index') }}">{{ __('Photos') }}</a>
+                            <a class="nav-link" href="{{ route('admin.photos.index') }}">
+                                <i class="fas fa-camera fa-sm fa-fw"></i> {{ __('Photos') }}
+                            </a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('admin.categories.index') }}">
+                                <i class="fas fa-folder fa-sm fa-fw"></i> {{ __('Categories') }}
+                            </a>
                         </li>
 
                     </ul>

@@ -4,7 +4,7 @@ use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\PhotoController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\Admin\CategoryController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -31,6 +31,9 @@ Route::middleware(['auth', 'verified'])
         Route::resource('photos', PhotoController::class)->parameters([
             'photos' => 'photo:slug'
         ]);
+
+        // Categories route here
+        Route::resource('categories', CategoryController::class);
     });
 
 
