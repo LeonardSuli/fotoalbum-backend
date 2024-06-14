@@ -34,9 +34,12 @@
 
                 <h2>{{ $photo->title }}</h2>
 
+                <div>{{ $photo->in_evidence }}</div>
+
                 <strong>Category: </strong> {{ $photo->category ? $photo->category->name : 'Uncategorized' }}
 
                 <div>{{ $photo->description }}</div>
+
 
             </div>
 

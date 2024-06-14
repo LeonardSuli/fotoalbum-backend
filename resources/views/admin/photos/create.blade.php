@@ -26,6 +26,11 @@
                 <input type="text" class="form-control" name="title" id="title" aria-describedby="titleHelper"
                     placeholder="Add a title for the photo" />
                 <small id="titleHelper" class="form-text text-muted">Add photo title here</small>
+
+                {{-- Error --}}
+                @error('title')
+                    <div class="text-danger">{{ $message }}</div>
+                @enderror
             </div>
 
             {{-- Category --}}
@@ -40,6 +45,14 @@
                     @endforeach
 
                 </select>
+            </div>
+
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox"
+                    value="
+                {{-- {{ $photo->in_evidence }} --}}
+                 " id="in_evidence" name="in_evidence" />
+                <label class="form-check-label" for="in_evidence"> Best photos </label>
             </div>
 
 
@@ -61,7 +74,10 @@
 
 
 
-            <button type="submit" class="btn btn-primary">
+
+
+
+            <button type="submit" class="btn btn-primary mb-3">
                 Create
             </button>
 

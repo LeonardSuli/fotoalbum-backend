@@ -2,6 +2,8 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Admin\PhotoController;
+use App\Models\Photo;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,6 +16,17 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
-});
+// Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
+//     return $request->user();
+// });
+
+
+// Option 1
+// Route::get('photos', function () {
+//     return Photo::all();
+// });
+
+
+Route::get('photos', [PhotoController::class, 'index']);
+
+Route::get('photos/{photo}', [PhotoController::class, 'show']);

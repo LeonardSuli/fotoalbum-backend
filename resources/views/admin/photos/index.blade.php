@@ -115,7 +115,9 @@
                     @empty
 
                         <tr class="">
-                            <td scope="row" colspan="5">No record to show.</td>
+                            <td class="text-danger text-center" scope="row" colspan="5">
+                                <strong>No record to show.</strong>
+                            </td>
                         </tr>
                     @endforelse
 

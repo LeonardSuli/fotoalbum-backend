@@ -80,7 +80,7 @@
 
 
 
-            <button type="submit" class="btn btn-primary">
+            <button type="submit" class="btn btn-primary mb-4">
                 Update
             </button>
 

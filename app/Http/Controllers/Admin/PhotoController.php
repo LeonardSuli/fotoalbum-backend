@@ -60,7 +60,6 @@ class PhotoController extends Controller
             // Validate image
             $val_data['upload_image'] = $image_path;
             // dd($val_data);
-
         }
 
         $val_data['user_id'] = auth()->id();
