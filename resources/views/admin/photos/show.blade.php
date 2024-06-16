@@ -34,11 +34,11 @@
 
                 <h2>{{ $photo->title }}</h2>
 
-                <div>{{ $photo->in_evidence }}</div>
+                {{-- <div>{{ $photo->in_evidence }}</div> --}}
 
-                <strong>Category: </strong> {{ $photo->category ? $photo->category->name : 'Uncategorized' }}
+                <div><strong>Category: </strong> {{ $photo->category ? $photo->category->name : 'Uncategorized' }}</div>
 
-                <div>{{ $photo->description }}</div>
+                <div class="my-3">{{ $photo->description }}</div>
 
 
             </div>

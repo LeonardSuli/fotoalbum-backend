@@ -5,11 +5,30 @@ namespace App\Http\Controllers\API;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Photo;
+use App\Models\Category;
 
 class PhotoController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
+        if ($request->has('search')) {
+
+            return response()->json([
+
+                'success' => 'true',
+                'results' => Photo::with(['category', 'user'])->orderByDesc('id')->where('title', 'LIKE', '%' . $request->search . '%')->paginate()
+
+            ]);
+        }
+        // else {
+        //     return response()->json([
+
+        //         'success' => 'true',
+        //         'results' => Category::orderByDesc('id')->where('name', 'LIKE', '%' . $request->search . '%')->paginate()
+
+        //     ]);
+        // }
+
         return response()->json([
             'success' => 'true',
             'results' => Photo::with(['category', 'user'])->orderByDesc('id')->paginate()

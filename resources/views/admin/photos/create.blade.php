@@ -24,7 +24,7 @@
             <div class="mb-3">
                 <label for="title" class="form-label">Title</label>
                 <input type="text" class="form-control" name="title" id="title" aria-describedby="titleHelper"
-                    placeholder="Add a title for the photo" />
+                    placeholder="Add a title for the photo" value="{{ old('title') }}" />
                 <small id="titleHelper" class="form-text text-muted">Add photo title here</small>
 
                 {{-- Error --}}
@@ -47,11 +47,12 @@
                 </select>
             </div>
 
-            <div class="form-check">
+            <div class="form-check my-3">
                 <input class="form-check-input" type="checkbox"
                     value="
                 {{-- {{ $photo->in_evidence }} --}}
-                 " id="in_evidence" name="in_evidence" />
+                 " id="in_evidence" name="in_evidence"
+                    value="{{ old('in_evidence') }}" />
                 <label class="form-check-label" for="in_evidence"> Best photos </label>
             </div>
 
@@ -60,27 +61,31 @@
             <div class="mb-3">
                 <label for="upload_image" class="form-label">Image</label>
                 <input type="file" class="form-control" name="upload_image" id="upload_image" placeholder="Image"
-                    aria-describedby="ImageHelper" />
+                    aria-describedby="ImageHelper" value="{{ old('upload_image') }}" />
                 <div id="ImageHelper" class="form-text">Upload a image</div>
+
+                {{-- Error --}}
+                @error('upload_image')
+                    <div class="text-danger">{{ $message }}</div>
+                @enderror
             </div>
 
             {{-- Description --}}
             <div class="mb-3">
                 <label for="description" class="form-label">Description</label>
                 <textarea class="form-control" name="description" id="escription" rows="5"
-                    placeholder="Add a description for the photo">{{ old('description') }}</textarea>
+                    placeholder="Add a description for the photo">{{ old('description') }}
+                </textarea>
+
+                {{-- Error --}}
+                @error('description')
+                    <div class="text-danger">{{ $message }}</div>
+                @enderror
             </div>
-
-
-
-
-
-
 
             <button type="submit" class="btn btn-primary mb-3">
                 Create
             </button>
-
 
         </form>
 

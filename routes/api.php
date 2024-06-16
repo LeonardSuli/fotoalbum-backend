@@ -2,7 +2,7 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Admin\PhotoController;
+use App\Http\Controllers\Api\PhotoController;
 use App\Models\Photo;
 
 /*
@@ -21,12 +21,14 @@ use App\Models\Photo;
 // });
 
 
+
+
 // Option 1
 // Route::get('photos', function () {
 //     return Photo::all();
 // });
 
 
+// Route Api
 Route::get('photos', [PhotoController::class, 'index']);
-
 Route::get('photos/{photo}', [PhotoController::class, 'show']);

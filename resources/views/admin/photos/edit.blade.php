@@ -47,7 +47,7 @@
             </div>
 
             {{-- Upload Image --}}
-            <div class="d-flex align-items-center gap-3 ">
+            <div class="d-flex align-items-center gap-3 my-3">
 
                 @if (Str::startsWith($photo->upload_image, 'https://'))
                     <img width="200px" src="{{ $photo->upload_image }}" alt="">
