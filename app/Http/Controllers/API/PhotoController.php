@@ -5,6 +5,7 @@ namespace App\Http\Controllers\API;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Photo;
+use Illuminate\Database\Eloquent\Builder;
 
 class PhotoController extends Controller
 {
@@ -15,18 +16,12 @@ class PhotoController extends Controller
             return response()->json([
 
                 'success' => 'true',
-                'results' => Photo::with(['category', 'user'])->orderByDesc('id')->where('title', 'LIKE', '%' . $request->search . '%')->paginate()
-
+                'results' => Photo::with(['category', 'user'])->orderByDesc('id')->where('title', 'LIKE', '%' . $request->search . '%')
+                    ->orWhereHas('category', function (Builder $query) use ($request) {
+                        $query->where('name', 'LIKE', '%' . $request->search . '%');
+                    })->paginate()
             ]);
         }
-        // else {
-        //     return response()->json([
-
-        //         'success' => 'true',
-        //         'results' => Category::orderByDesc('id')->where('name', 'LIKE', '%' . $request->search . '%')->paginate()
-
-        //     ]);
-        // }
 
         return response()->json([
             'success' => 'true',
