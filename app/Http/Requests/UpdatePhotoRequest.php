@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 class UpdatePhotoRequest extends FormRequest
 {
@@ -22,7 +23,7 @@ class UpdatePhotoRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'title' => 'required',
+            'title' => ['required', Rule::unique('photos')->ignore($this->photo->id)],
             'category_id' => 'nullable|exists:categories,id',
             'upload_image' => 'nullable|image|max:200',
             'description' => 'nullable',

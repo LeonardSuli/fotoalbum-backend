@@ -4,6 +4,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\PhotoController;
 use App\Models\Photo;
+use App\Models\Category;
+use App\Http\Controllers\API\CategoryController;
 
 /*
 |--------------------------------------------------------------------------
@@ -29,6 +31,11 @@ use App\Models\Photo;
 // });
 
 
-// Route Api
+// Route Api Photo
 Route::get('photos', [PhotoController::class, 'index']);
 Route::get('photos/{photo}', [PhotoController::class, 'show']);
+
+
+// Route Api Category
+Route::get('categories', [CategoryController::class, 'index']);
+Route::get('categories/{category}', [CategoryController::class, 'show']);

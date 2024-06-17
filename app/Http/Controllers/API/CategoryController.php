@@ -4,9 +4,9 @@ namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\Photo;
+use App\Models\Category;
 
-class PhotoController extends Controller
+class CategoryController extends Controller
 {
     public function index(Request $request)
     {
@@ -15,35 +15,28 @@ class PhotoController extends Controller
             return response()->json([
 
                 'success' => 'true',
-                'results' => Photo::with(['category', 'user'])->orderByDesc('id')->where('title', 'LIKE', '%' . $request->search . '%')->paginate()
+                'results' => Category::all()->orderByDesc('id')->where('name', 'LIKE', '%' . $request->search . '%')->paginate()
 
             ]);
         }
-        // else {
-        //     return response()->json([
 
-        //         'success' => 'true',
-        //         'results' => Category::orderByDesc('id')->where('name', 'LIKE', '%' . $request->search . '%')->paginate()
-
-        //     ]);
-        // }
 
         return response()->json([
             'success' => 'true',
-            'results' => Photo::with(['category', 'user'])->orderByDesc('id')->paginate()
+            'results' => Category::all()->orderByDesc('id')->paginate()
         ]);
     }
 
     public function show($id)
     {
 
-        $photo = Photo::with(['category', 'user'])->where('id', $id)->first();
+        $category = Category::where('id', $id)->first();
 
-        if ($photo) {
+        if ($category) {
 
             return response()->json([
                 'success' => 'true',
-                'results' => $photo
+                'results' => $category
             ]);
         } else {
 
